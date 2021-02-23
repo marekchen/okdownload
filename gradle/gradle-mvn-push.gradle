@@ -28,7 +28,8 @@ def isReleaseBuild() {
 
 def getReleaseRepositoryUrl() {
   return hasProperty('RELEASE_REPOSITORY_URL') ? RELEASE_REPOSITORY_URL :
-      "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
+//      "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
+        "https://api.youliaokk.com:21380/repository/qj-feeds-sdk/"
 }
 
 def getSnapshotRepositoryUrl() {
@@ -37,11 +38,11 @@ def getSnapshotRepositoryUrl() {
 }
 
 def getRepositoryUsername() {
-  return hasProperty('SONATYPE_NEXUS_USERNAME') ? SONATYPE_NEXUS_USERNAME : ""
+  return hasProperty('SONATYPE_NEXUS_USERNAME') ? SONATYPE_NEXUS_USERNAME : "chenpei"
 }
 
 def getRepositoryPassword() {
-  return hasProperty('SONATYPE_NEXUS_PASSWORD') ? SONATYPE_NEXUS_PASSWORD : ""
+  return hasProperty('SONATYPE_NEXUS_PASSWORD') ? SONATYPE_NEXUS_PASSWORD : "Chenpei@123"
 }
 
 afterEvaluate { project ->
@@ -57,9 +58,9 @@ afterEvaluate { project ->
         repository(url: getReleaseRepositoryUrl()) {
           authentication(userName: getRepositoryUsername(), password: getRepositoryPassword())
         }
-        snapshotRepository(url: getSnapshotRepositoryUrl()) {
-          authentication(userName: getRepositoryUsername(), password: getRepositoryPassword())
-        }
+//        snapshotRepository(url: getSnapshotRepositoryUrl()) {
+//          authentication(userName: getRepositoryUsername(), password: getRepositoryPassword())
+//        }
 
         pom.project {
           name POM_NAME
